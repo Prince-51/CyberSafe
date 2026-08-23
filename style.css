@@ -1,0 +1,575 @@
+/* 
+   CSS Variables for a consistent color theme.
+   We use a dark theme with vibrant blue and green accents for a modern "cyber" look. 
+*/
+:root {
+    --bg-color: #0f172a;        /* Dark blue/gray background */
+    --surface-color: #1e293b;   /* Slightly lighter color for cards */
+    --text-primary: #f8fafc;    /* White/light gray text */
+    --text-secondary: #94a3b8;  /* Dimmed text for subtitles */
+    --accent-blue: #3b82f6;     /* Primary blue accent */
+    --accent-blue-hover: #2563eb;
+    --accent-green: #10b981;    /* Secondary green accent */
+}
+
+/* Reset default margins and paddings for consistency across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* --- Navigation Bar --- */
+header {
+    background-color: rgba(15, 23, 42, 0.95);
+    position: sticky; /* Keeps navbar at top when scrolling */
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.shield-icon {
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue);
+}
+
+/* Navigation Actions (Theme Toggle & Mobile Menu) */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Mobile Menu Button (Hidden on Desktop, shown on smaller screens) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    padding: 2rem;
+    /* Subtle gradient background for the hero section */
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(15, 23, 42, 1) 100%);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    /* Text gradient to make the heading pop */
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* The Explore Tools button */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 0.8rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cta-button:hover {
+    background-color: var(--accent-blue-hover);
+    transform: translateY(-2px); /* Makes button jump slightly on hover */
+}
+
+/* --- Features / Tools Section --- */
+.features {
+    padding: 5rem 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+}
+
+.grid {
+    display: grid;
+    /* Responsive Grid: items will automatically wrap and be at least 250px wide */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Individual Tool Cards */
+.card {
+    background-color: var(--surface-color);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift card up on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.3); /* Blue glowing border */
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Pushes the button to the bottom if text length varies */
+}
+
+.card-btn {
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: not-allowed; /* Indicating it's not active yet */
+    font-weight: 600;
+    opacity: 0.7;
+    margin-top: auto; 
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #0b1120;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer-content p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.footer-content .disclaimer {
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin-top: 1rem;
+}
+
+/* --- URL Checker Section --- */
+.url-checker-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.checker-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.checker-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#url-input {
+    flex-grow: 1;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#url-input:focus {
+    border-color: var(--accent-blue);
+}
+
+.checker-btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.checker-result {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.checker-result.hidden {
+    display: none;
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.result-icon {
+    font-size: 1.8rem;
+}
+
+.result-title {
+    font-size: 1.4rem;
+}
+
+.result-description {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.result-details {
+    list-style-type: none;
+    margin-bottom: 1rem;
+}
+
+.result-details li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.result-details li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-size: 1.2rem;
+    top: -2px;
+}
+
+/* Result Categories */
+.result-safe {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--accent-green);
+}
+.result-safe h3 {
+    color: var(--accent-green);
+}
+.result-safe .result-details li::before {
+    color: var(--accent-green);
+}
+
+.result-suspicious {
+    background-color: rgba(245, 158, 11, 0.1);
+    border: 1px solid #f59e0b;
+}
+.result-suspicious h3 {
+    color: #f59e0b;
+}
+.result-suspicious .result-details li::before {
+    color: #f59e0b;
+}
+
+.result-invalid {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+}
+.result-invalid h3 {
+    color: #ef4444;
+}
+.result-invalid .result-details li::before {
+    color: #ef4444;
+}
+
+.safety-notice {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-blue);
+}
+
+/* --- Responsive Design (For Tablets & Mobile) --- */
+@media (max-width: 768px) {
+    .checker-form {
+        flex-direction: column;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu on small screens */
+    }
+
+    .nav-links {
+        display: none; /* Hide horizontal nav links */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--surface-color);
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+    }
+
+    /* When the .active class is added via Javascript, the menu shows up */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- Light Theme Overrides --- */
+[data-theme="light"] {
+    --bg-color: #f8fafc;
+    --surface-color: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-blue: #2563eb;
+    --accent-blue-hover: #1d4ed8;
+    --accent-green: #059669;
+}
+
+[data-theme="light"] header {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .hero {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(248, 250, 252, 1) 100%);
+}
+
+[data-theme="light"] .card, 
+[data-theme="light"] .checker-box {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .url-checker-section {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] #url-input {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .safety-notice {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] footer {
+    background-color: #f1f5f9;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .nav-links {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* --- Password Checker Specifics --- */
+.password-input-group {
+    position: relative;
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+#pwd-input {
+    flex-grow: 1;
+    padding: 1rem 3rem 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#pwd-input:focus {
+    border-color: var(--accent-blue);
+}
+
+.pwd-toggle-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.pwd-toggle-btn:hover {
+    color: var(--text-primary);
+}
+
+.strength-meter-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    height: 8px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.strength-meter-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s, background-color 0.3s;
+    background-color: transparent;
+}
+
+/* Password strength colors */
+.strength-weak { background-color: #ef4444; }
+.strength-fair { background-color: #f59e0b; }
+.strength-good { background-color: #3b82f6; }
+.strength-strong { background-color: #10b981; }
+
+[data-theme="light"] #pwd-input {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .strength-meter-container {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Generic hidden utility class */
+.hidden {
+    display: none !important;
+}
+
+/* Hide default browser password reveal icon (Edge/Chrome) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+input[type="password"]::-webkit-textfield-decoration-container {
+    /* Sometimes needed for webkit */
+    display: none;
+}
+
+/* --- Phishing Checklist Styles --- */
+.checklist-item input:checked + span {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
