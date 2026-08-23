@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER: THE LAST CLICK | Scam Awareness</title>
+    
+    <!-- Core styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Game specific styles -->
+    <link rel="stylesheet" href="scam-awareness.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-game-body">
+    <!-- Navigation Bar (Reused) -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="shield-icon">🛡️</span> CyberSafe
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#tools">Tools</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">☀️</button>
+                <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Game Container -->
+    <main class="game-container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div class="dashboard-title">
+                <h1>CYBER: THE LAST CLICK</h1>
+                <p class="subtitle" id="case-title">Loading Case...</p>
+            </div>
+            <div class="stats-panel">
+                <div class="stat-box">
+                    <span class="stat-label">CASE</span>
+                    <span class="stat-value" id="stat-case">01 / 05</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">EVIDENCE</span>
+                    <span class="stat-value" id="stat-evidence">0 / 0</span>
+                </div>
+                <div class="stat-box xp-box">
+                    <span class="stat-label">XP</span>
+                    <span class="stat-value" id="stat-xp">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investigation Area -->
+        <div class="investigation-grid">
+            
+            <!-- Left Panel: The Device / Situation -->
+            <div class="device-panel">
+                <div class="panel-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="panel-title">INTERCEPTED COMMUNICATION</span>
+                </div>
+                
+                <!-- This area will be dynamically updated by JS with the phone simulator -->
+                <div class="device-content" id="device-content">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Decrypting communication...</p>
+                    </div>
+                </div>
+                
+                <!-- Story Instructions -->
+                <div class="story-instructions" id="story-instructions">
+                    <p>Investigate the message above. Click on any suspicious elements to collect evidence.</p>
+                </div>
+            </div>
+
+            <!-- Right Panel: Evidence Board -->
+            <div class="evidence-panel">
+                <div class="panel-header border-bottom">
+                    <span class="panel-title">EVIDENCE BOARD</span>
+                    <button id="btn-decide" class="action-btn hidden">MAKE DECISION</button>
+                </div>
+                
+                <div class="evidence-board" id="evidence-board">
+                    <!-- Evidence items will be injected here -->
+                    <div class="empty-state" id="evidence-empty-state">
+                        <p>No evidence collected yet.</p>
+                        <p class="hint">Interact with the communication to find clues.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Decision Modal (Hidden by default) -->
+    <div id="decision-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2>CRITICAL DECISION</h2>
+            </div>
+            <div class="modal-body">
+                <p id="decision-question">Based on the evidence, what should you do?</p>
+                <div class="decision-options" id="decision-options">
+                    <!-- Options injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Modal (Hidden by default) -->
+    <div id="result-modal" class="modal hidden">
+        <div class="modal-content glass-panel result-panel">
+            <div class="modal-header" id="result-header">
+                <h2 id="result-title">CASE CLOSED</h2>
+            </div>
+            <div class="modal-body">
+                <p id="result-consequence" class="consequence-text"></p>
+                
+                <div class="educational-card">
+                    <div class="card-title">
+                        <span id="lesson-icon">🚩</span> <span id="lesson-title">RED FLAG</span>
+                    </div>
+                    <p id="result-lesson"></p>
+                </div>
+
+                <div class="xp-reward" id="xp-reward-display">
+                    +50 XP
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-next-case" class="action-btn primary-btn">NEXT CASE</button>
+                <button id="btn-retry-case" class="action-btn secondary-btn hidden">RETRY DECISION</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Interactive Scripts -->
+    <script src="script.js"></script>
+    <!-- Game Logic Scripts -->
+    <script src="scam-awareness.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe | Phishing Awareness</title>
+    
+    <!-- Link to our CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="shield-icon">🛡️</span> CyberSafe
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#tools">Tools</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">☀️</button>
+                <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-bottom: 4rem;">
+        <!-- Hero Section -->
+        <section class="phishing-hero" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, var(--bg-color) 100%);">
+            <div class="container" style="max-width: 800px;">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--text-primary);">What is Phishing?</h1>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.8;">
+                    Phishing is a type of online scam where attackers pretend to be a trusted person, company, or service to trick you into revealing information, clicking a harmful link, sending money, or installing malicious software.
+                </p>
+            </div>
+        </section>
+
+        <!-- Common Types Section -->
+        <section class="features" style="padding: 3rem 2rem;">
+            <div class="container">
+                <h2 class="section-title">Common Phishing Types</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon">📧</div>
+                        <h3>Email Phishing</h3>
+                        <p>Fake emails pretending to come from banks, companies, schools, delivery services, etc.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📱</div>
+                        <h3>SMS Phishing (Smishing)</h3>
+                        <p>Fake text messages containing suspicious links or urgent requests.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📞</div>
+                        <h3>Voice Phishing (Vishing)</h3>
+                        <p>Scammers use phone calls or voice messages while pretending to be trusted organizations.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Targeted Phishing</h3>
+                        <p>Attackers create highly personalized messages targeting a specific person or organization (Spear Phishing).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Spot Phishing -->
+        <section style="padding: 3rem 2rem; background-color: rgba(255, 255, 255, 0.02);">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title">🚩 How to Spot Phishing</h2>
+                <ul class="red-flags-list" style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Unexpected messages:</strong> Contact from out of the blue.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Urgent or threatening language:</strong> Creating panic to rush you.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Suspicious links:</strong> URLs that look slightly misspelled or unusual.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Requests for passwords/OTPs:</strong> Legitimate companies never ask for these.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Requests for banking info:</strong> Asking you to confirm payment details.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Unknown sender addresses:</strong> The "from" email doesn't match the company.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Spelling or grammar mistakes:</strong> Often a sign of an unprofessional scam.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Too good to be true:</strong> Free money, prizes, or incredible offers.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Unexpected attachments:</strong> Invoices or documents you didn't ask for.</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Bypassing security:</strong> Asking you to ignore security warnings.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Fake Message Examples -->
+        <section style="padding: 4rem 2rem;">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title">Fake Message Examples</h2>
+                <p class="section-subtitle">Learn to identify the warning signs in these completely fictional examples.</p>
+                
+                <div style="display: grid; gap: 2rem; margin-top: 2rem;">
+                    <!-- Example 1 -->
+                    <div class="phishing-example" style="background-color: var(--surface-color); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="margin-bottom: 1rem; color: #ef4444; font-weight: bold;">⚠️ Example Phishing Message — Do Not Use the Link</div>
+                        <div class="message-bubble" style="background-color: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 1.5rem; font-family: monospace; color: var(--text-primary);">
+                            From: security@nationalbank-alerts.net<br>
+                            Subject: URGENT: Account Suspension<br><br>
+                            Dear Customer,<br><br>
+                            URGENT: Your bank account will be suspended today due to unusual activity. Verify your account immediately using the link below to restore access.<br><br>
+                            &gt; <a href="#" style="color: var(--accent-blue);">http://verify-national-bank-login.com/secure</a>
+                        </div>
+                        <div class="warning-signs">
+                            <h4 style="margin-bottom: 0.5rem;">Warning Signs:</h4>
+                            <ul style="padding-left: 1.5rem; color: var(--text-secondary);">
+                                <li><strong>Urgency:</strong> Creates panic with "suspended today".</li>
+                                <li><strong>Threat:</strong> Threatens account suspension to force action.</li>
+                                <li><strong>Suspicious Sender:</strong> Uses a fake domain (-alerts.net) instead of the real bank website.</li>
+                                <li><strong>Request to click a link:</strong> Directs you to a fake login page to steal credentials.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Example 2 -->
+                    <div class="phishing-example" style="background-color: var(--surface-color); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="margin-bottom: 1rem; color: #ef4444; font-weight: bold;">⚠️ Example Phishing SMS — Do Not Use the Link</div>
+                        <div class="message-bubble" style="background-color: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 1.5rem; font-family: monospace; color: var(--text-primary);">
+                            Delivery Express: Your package is held at the depot due to an unpaid shipping fee of $1.99. Pay immediately to release your package: <a href="#" style="color: var(--accent-blue);">http://delivery-express-fees.com/pay</a>
+                        </div>
+                        <div class="warning-signs">
+                            <h4 style="margin-bottom: 0.5rem;">Warning Signs:</h4>
+                            <ul style="padding-left: 1.5rem; color: var(--text-secondary);">
+                                <li><strong>Unexpected:</strong> You may not have ordered anything.</li>
+                                <li><strong>Financial Request:</strong> Asking for a small fee (a trick to get your credit card details).</li>
+                                <li><strong>Suspicious Link:</strong> Using a random domain instead of a known tracking system.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="phishing-quiz" style="padding: 4rem 2rem; background-color: rgba(37, 99, 235, 0.05); border-top: 1px solid rgba(59, 130, 246, 0.2); border-bottom: 1px solid rgba(59, 130, 246, 0.2);">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <h2 class="section-title">🧠 Can You Spot the Phishing?</h2>
+                <p class="section-subtitle">Test your skills with these fictional scenarios.</p>
+
+                <div class="quiz-container" style="background-color: var(--surface-color); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 2rem; text-align: left;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Scenario <span id="quiz-progress">1/3</span></span>
+                    </div>
+                    
+                    <div id="quiz-scenario-box" style="background-color: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; font-family: monospace; color: var(--text-primary); font-size: 1.05rem;">
+                        <!-- Content injected via JS -->
+                    </div>
+                    
+                    <div id="quiz-question-area">
+                        <h4 style="margin-bottom: 1rem; text-align: center;">Is this message Safe or Phishing?</h4>
+                        <div style="display: flex; justify-content: center; gap: 1rem;">
+                            <button id="btn-safe" class="cta-button" style="background-color: var(--accent-green); padding: 0.8rem 2rem;">✅ Looks Safe</button>
+                            <button id="btn-phish" class="cta-button" style="background-color: #ef4444; padding: 0.8rem 2rem;">⚠️ Phishing</button>
+                        </div>
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden" style="margin-top: 2rem; padding: 1.5rem; border-radius: 8px;">
+                        <h3 id="quiz-result-title" style="margin-bottom: 0.5rem;"></h3>
+                        <p id="quiz-result-desc" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
+                        <button id="btn-next-quiz" class="cta-button" style="padding: 0.6rem 1.5rem;">Next Scenario</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What to do & Checklist -->
+        <section style="padding: 4rem 2rem;">
+            <div class="container" style="max-width: 900px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;">
+                
+                <!-- What Should You Do -->
+                <div>
+                    <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem;">🛡️ What Should You Do?</h2>
+                    <ol style="padding-left: 1.5rem; color: var(--text-primary); line-height: 1.8;">
+                        <li style="margin-bottom: 0.5rem;">Don't click suspicious links.</li>
+                        <li style="margin-bottom: 0.5rem;">Don't open unexpected attachments.</li>
+                        <li style="margin-bottom: 0.5rem;">Don't share passwords, OTPs, PINs, or banking information.</li>
+                        <li style="margin-bottom: 0.5rem;">Verify the message using the organization's official website or app.</li>
+                        <li style="margin-bottom: 0.5rem;">Report the message to the platform or organization when possible.</li>
+                        <li style="margin-bottom: 0.5rem;">Delete or safely ignore the message.</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>If you already entered sensitive info:</strong> change the affected password and contact the relevant organization immediately.</li>
+                    </ol>
+                </div>
+
+                <!-- Safety Checklist -->
+                <div>
+                    <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem;">✅ Phishing Safety Checklist</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">Use this interactive checklist when you receive a suspicious message. (No data is saved).</p>
+                    
+                    <div class="interactive-checklist">
+                        <label class="checklist-item" style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; cursor: pointer;">
+                            <input type="checkbox" style="margin-top: 0.3rem; width: 1.2rem; height: 1.2rem; cursor: pointer;">
+                            <span style="color: var(--text-primary); transition: opacity 0.3s;">I checked exactly who sent the message (the full email/number).</span>
+                        </label>
+                        <label class="checklist-item" style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; cursor: pointer;">
+                            <input type="checkbox" style="margin-top: 0.3rem; width: 1.2rem; height: 1.2rem; cursor: pointer;">
+                            <span style="color: var(--text-primary); transition: opacity 0.3s;">I carefully checked the destination of any links before clicking.</span>
+                        </label>
+                        <label class="checklist-item" style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; cursor: pointer;">
+                            <input type="checkbox" style="margin-top: 0.3rem; width: 1.2rem; height: 1.2rem; cursor: pointer;">
+                            <span style="color: var(--text-primary); transition: opacity 0.3s;">I did not respond to an unexpected or urgent request.</span>
+                        </label>
+                        <label class="checklist-item" style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; cursor: pointer;">
+                            <input type="checkbox" style="margin-top: 0.3rem; width: 1.2rem; height: 1.2rem; cursor: pointer;">
+                            <span style="color: var(--text-primary); transition: opacity 0.3s;">I did not share my password, OTP, or sensitive info.</span>
+                        </label>
+                        <label class="checklist-item" style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; cursor: pointer;">
+                            <input type="checkbox" style="margin-top: 0.3rem; width: 1.2rem; height: 1.2rem; cursor: pointer;">
+                            <span style="color: var(--text-primary); transition: opacity 0.3s;">I verified the request by logging into the official app/site separately.</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Safety Rules Warning -->
+        <section style="padding: 2rem;">
+            <div class="container" style="max-width: 900px;">
+                <div style="background-color: rgba(245, 158, 11, 0.1); border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <p style="color: #f59e0b; font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem;">⚠️ Important Safety Reminder</p>
+                    <p style="color: var(--text-primary); font-size: 0.95rem; margin: 0;">
+                        Never use real credentials, OTPs, banking information, or personal information while practicing phishing awareness. All examples on this page are completely fictional and strictly for educational purposes.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">🛡️ CyberSafe</div>
+            <p>&copy; 2026 CyberSafe. Built for educational purposes.</p>
+            <p class="disclaimer">Disclaimer: CyberSafe provides basic guidance and cannot detect every real-world threat.</p>
+        </div>
+    </footer>
+
+    <!-- Link to our JavaScript file for interactivity -->
+    <script src="script.js"></script>
+</body>
+</html>

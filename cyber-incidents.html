@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Incidents | CyberSafe</title>
+    
+    <!-- Core styles for fonts and basic theme -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Specific styles for the Cyber Incidents feature -->
+    <link rel="stylesheet" href="cyber-incidents.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-incidents-body">
+
+    <!-- Top Navigation -->
+    <header class="incident-nav">
+        <div class="nav-left">
+            <a href="index.html" class="back-link">← CyberSafe</a>
+            <button class="nav-btn" onclick="navigateTo('screen-live-threats')">🔴 Live Threats</button>
+            <button class="nav-btn" onclick="navigateTo('screen-archive')">📚 Archive</button>
+        </div>
+        
+        <div class="nav-center hidden" id="case-nav">
+            <button class="nav-btn case-nav-btn" onclick="navigateTo('screen-anatomy')">🧬 Anatomy</button>
+            <button class="nav-btn case-nav-btn" onclick="navigateTo('screen-investigation')">🕵️ Investigation</button>
+            <button class="nav-btn case-nav-btn" onclick="navigateTo('screen-defender')">🛡️ Defense</button>
+            <button class="nav-btn case-nav-btn" onclick="navigateTo('screen-score')">📊 Results</button>
+        </div>
+        
+        <div class="nav-actions">
+            <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">
+                ☀️
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container for Single Page Application Feel -->
+    <main id="app-container">
+        
+        <!-- 🎬 SCREEN: LANDING (Entry Screen) -->
+        <section id="screen-landing" class="screen active-screen">
+            <div class="landing-content">
+                <div class="cinematic-title-group">
+                    <h2 class="sub-label">CYBER INCIDENTS</h2>
+                    <h1 class="main-title">
+                        <span class="glitch-text" data-text="REAL ATTACKS.">REAL ATTACKS.</span><br>
+                        <span class="glitch-text" data-text="REAL STORIES.">REAL STORIES.</span><br>
+                        <span class="glitch-text highlight-text" data-text="REAL LESSONS.">REAL LESSONS.</span>
+                    </h1>
+                    <p class="subtitle">Explore real cyber incidents, uncover how they unfolded, and learn how defenders responded.</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="navigateTo('screen-live-threats')">🔴 LIVE THREATS</button>
+                    <button class="btn-secondary" onclick="navigateTo('screen-archive')">📚 INCIDENT ARCHIVE</button>
+                </div>
+            </div>
+            <!-- Decorative background elements -->
+            <div class="grid-overlay"></div>
+            <div class="glow-orb"></div>
+        </section>
+
+        <!-- 🔴 SCREEN: LIVE THREATS -->
+        <section id="screen-live-threats" class="screen hidden-screen">
+            <div class="container">
+                <div class="screen-header">
+                    <h2>🔴 LIVE THREAT CENTER</h2>
+                    <p>Current active cybersecurity incidents and campaigns.</p>
+                    <button class="btn-outline back-to-home" onclick="navigateTo('screen-landing')">← Home</button>
+                </div>
+                
+                <!-- Fed by JavaScript -->
+                <div id="live-threats-feed" class="threats-grid">
+                    <!-- Dynamic Threat Cards will be injected here -->
+                </div>
+                <div class="demo-notice"><strong>DEMO DATA</strong> - This feed is for educational purposes.</div>
+            </div>
+        </section>
+
+        <!-- 📚 SCREEN: INCIDENT ARCHIVE -->
+        <section id="screen-archive" class="screen hidden-screen">
+            <div class="container">
+                <div class="screen-header">
+                    <h2>📚 INCIDENT ARCHIVE</h2>
+                    <p>Historical attacks that shaped modern cybersecurity.</p>
+                    <button class="btn-outline back-to-home" onclick="navigateTo('screen-landing')">← Home</button>
+                </div>
+
+                <!-- Filters -->
+                <div class="archive-filters">
+                    <input type="text" id="archive-search" placeholder="Search incidents...">
+                    <select id="archive-type-filter">
+                        <option value="all">All Types</option>
+                        <option value="Ransomware">Ransomware</option>
+                        <option value="Malware">Malware</option>
+                        <option value="Data Breach">Data Breach</option>
+                    </select>
+                </div>
+
+                <!-- Visual Timeline structure -->
+                <div class="archive-timeline">
+                    <div class="timeline-line"></div>
+                    <div id="archive-list" class="timeline-nodes">
+                        <!-- Dynamic Nodes injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholders for future phases (Phase 2-5) -->
+        <!-- 🗂️ SCREEN: INCIDENT FILE -->
+        <section id="screen-incident-file" class="screen hidden-screen">
+            <div class="container incident-file-container">
+                <div class="case-folder">
+                    <div class="case-header">
+                        <span class="classification">CONFIDENTIAL CASE FILE</span>
+                        <h2 id="case-title" class="case-title-large">WANNACRY</h2>
+                    </div>
+                    
+                    <div class="case-meta-grid">
+                        <div class="meta-item">
+                            <span class="meta-label">DATE</span>
+                            <span id="case-date" class="meta-value">May 2017</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">TYPE</span>
+                            <span id="case-type" class="meta-value">Ransomware</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">SCALE</span>
+                            <span id="case-scale" class="meta-value">Global</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">STATUS</span>
+                            <span id="case-status" class="meta-value status-historical">Historical Incident</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-summary">
+                        <h3>EXECUTIVE SUMMARY</h3>
+                        <p id="case-summary-text">Loading...</p>
+                    </div>
+                    
+                    <div class="case-actions">
+                        <button class="btn-outline" onclick="navigateTo('screen-archive')">← Cancel</button>
+                        <button class="btn-primary" onclick="startInvestigation()">ENTER INVESTIGATION →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📅 SCREEN: TIMELINE -->
+        <section id="screen-timeline" class="screen hidden-screen">
+            <div class="container">
+                <div class="screen-header">
+                    <h2>📅 INCIDENT TIMELINE</h2>
+                    <p>How the attack unfolded step by step.</p>
+                    <button class="btn-outline back-to-home" onclick="navigateTo('screen-incident-file')">← Case File</button>
+                </div>
+                
+                <div class="interactive-timeline-layout">
+                    <!-- Left sidebar for timeline steps -->
+                    <div class="timeline-steps" id="incident-timeline-steps">
+                        <!-- Injected by JS -->
+                    </div>
+                    
+                    <!-- Right content area for the selected timeline detail -->
+                    <div class="timeline-detail-panel" id="timeline-detail-panel">
+                        <h3 class="detail-placeholder">Select a timeline event to view details.</h3>
+                    </div>
+                </div>
+                
+                <div class="next-phase-action">
+                    <button class="btn-secondary" onclick="navigateTo('screen-anatomy')">PROCEED TO ATTACK ANATOMY →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🧬 SCREEN 5: ATTACK ANATOMY -->
+        <section id="screen-anatomy" class="screen hidden-screen">
+            <div class="container">
+                <div class="screen-header">
+                    <h2>🧬 ATTACK ANATOMY</h2>
+                    <p>Understanding the kill chain. How did the attack progress?</p>
+                    <button class="btn-outline back-to-home" onclick="navigateTo('screen-timeline')">← Timeline</button>
+                </div>
+                
+                <div class="attack-chain-layout">
+                    <div id="anatomy-chain" class="anatomy-chain">
+                        <!-- Anatomy cards injected by JS -->
+                    </div>
+                </div>
+                
+                <div class="next-phase-action">
+                    <button class="btn-secondary" onclick="navigateTo('screen-investigation')">ENTER INVESTIGATION MODE →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🕵️ SCREEN 6 & 7: INVESTIGATION & EVIDENCE BOARD -->
+        <section id="screen-investigation" class="screen hidden-screen">
+            <div class="container">
+                <div class="screen-header">
+                    <h2>🕵️ INVESTIGATION BOARD</h2>
+                    <p>Review the evidence left behind.</p>
+                    <button class="btn-outline back-to-home" onclick="navigateTo('screen-anatomy')">← Attack Anatomy</button>
+                </div>
+                
+                <div class="investigation-layout">
+                    <!-- Categories -->
+                    <div class="investigation-categories">
+                        <button class="inv-category-btn active" onclick="selectInvestigationCategory('network')">🌐 NETWORK</button>
+                        <button class="inv-category-btn" onclick="selectInvestigationCategory('system')">💻 SYSTEM</button>
+                        <button class="inv-category-btn" onclick="selectInvestigationCategory('files')">📄 FILES</button>
+                        <button class="inv-category-btn" onclick="selectInvestigationCategory('alerts')">⚠️ ALERTS</button>
+                    </div>
+                    
+                    <!-- Evidence Board -->
+                    <div class="evidence-board" id="evidence-board">
+                        <!-- Evidence cards injected by JS -->
+                        <h3 class="detail-placeholder">Select a category to view evidence.</h3>
+                    </div>
+                </div>
+                
+                <div class="next-phase-action">
+                    <button class="btn-secondary" onclick="navigateTo('screen-impact')">VIEW IMPACT ASSESSMENT →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌍 SCREEN 8: IMPACT -->
+        <section id="screen-impact" class="screen hidden-screen">
+            <div class="container">
+                <div class="screen-header">
+                    <h2>📊 IMPACT ASSESSMENT</h2>
+                    <p>The real-world consequences of the incident.</p>
+                    <button class="btn-outline back-to-home" onclick="navigateTo('screen-investigation')">← Investigation</button>
+                </div>
+                
+                <div class="impact-grid" id="impact-grid">
+                    <!-- Impact stats injected by JS -->
+                </div>
+                
+                <div class="next-phase-action">
+                    <button class="btn-primary" onclick="navigateTo('screen-defender')">JOIN SECURITY TEAM →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🛡️ SCREEN 9: DEFENDER MODE (SCENARIO) -->
+        <section id="screen-defender" class="screen hidden-screen">
+            <div class="container incident-file-container">
+                <div class="defender-scenario-card">
+                    <div class="classification" style="border-color: var(--cyber-accent); color: var(--cyber-accent);">ACTIVE SIMULATION</div>
+                    <h2>🛡️ YOU ARE THE SECURITY TEAM</h2>
+                    
+                    <div class="scenario-context" id="scenario-context">
+                        <!-- Context injected by JS -->
+                    </div>
+                    
+                    <h3 id="scenario-question" class="scenario-question">What should the security team do first?</h3>
+                    
+                    <div class="scenario-options" id="scenario-options">
+                        <!-- Options injected by JS -->
+                    </div>
+                    
+                    <div id="scenario-feedback" class="scenario-feedback hidden-screen">
+                        <h3 id="feedback-title"></h3>
+                        <p id="feedback-desc"></p>
+                        <button class="btn-secondary" onclick="navigateTo('screen-response')">VIEW ACTUAL RESPONSE →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🛡️ SCREEN 10: RESPONSE (HOW IT WAS STOPPED) -->
+        <section id="screen-response" class="screen hidden-screen">
+            <div class="container">
+                <div class="screen-header">
+                    <h2>🛡️ INCIDENT RESPONSE</h2>
+                    <p>How defenders managed and contained the threat.</p>
+                    <button class="btn-outline back-to-home" onclick="navigateTo('screen-defender')">← Defender Mode</button>
+                </div>
+                
+                <div class="response-timeline" id="response-timeline">
+                    <!-- Response steps injected by JS -->
+                </div>
+                
+                <div class="next-phase-action">
+                    <button class="btn-secondary" onclick="navigateTo('screen-lessons')">PROCEED TO LESSONS →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🎓 SCREEN 11: WHAT WE LEARNED -->
+        <section id="screen-lessons" class="screen hidden-screen">
+            <div class="container">
+                <div class="screen-header">
+                    <h2>🎓 WHAT WE LEARNED</h2>
+                    <p>Key defensive takeaways from this incident.</p>
+                    <button class="btn-outline back-to-home" onclick="navigateTo('screen-response')">← Incident Response</button>
+                </div>
+                
+                <div class="lessons-grid" id="lessons-grid">
+                    <!-- Lessons injected by JS -->
+                </div>
+                
+                <div class="next-phase-action">
+                    <button class="btn-primary" onclick="navigateTo('screen-challenge')">TEST YOUR KNOWLEDGE →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🧠 SCREEN 12: MINI CHALLENGE -->
+        <section id="screen-challenge" class="screen hidden-screen">
+            <div class="container incident-file-container">
+                <div class="challenge-card">
+                    <div class="screen-header" style="border:none; margin-bottom:1rem; padding:0;">
+                        <span class="classification" style="border-color:#eab308; color:#eab308;">KNOWLEDGE CHECK</span>
+                        <h2 style="margin-top:1rem;">MINI CHALLENGE</h2>
+                        <p>Verify your understanding of the incident.</p>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="challenge-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div id="question-container" class="question-container">
+                        <h3 id="challenge-question-text" class="challenge-question">Question text</h3>
+                        <div class="challenge-options" id="challenge-options">
+                            <!-- Options injected by JS -->
+                        </div>
+                    </div>
+                    
+                    <div id="challenge-feedback" class="challenge-feedback hidden-screen">
+                        <h3 id="ch-feedback-title"></h3>
+                        <p id="ch-feedback-desc"></p>
+                        <button class="btn-secondary" id="next-question-btn" onclick="nextQuestion()">NEXT QUESTION →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🏆 FINAL SCORE -->
+        <section id="screen-score" class="screen hidden-screen">
+            <div class="container incident-file-container">
+                <div class="score-card text-center">
+                    <h2 class="case-title-large" style="font-size: 3rem; margin-bottom:1rem;">🏆 INCIDENT ANALYST</h2>
+                    <p class="subtitle" style="margin-bottom:2rem;">Investigation Complete</p>
+                    
+                    <div class="score-grid">
+                        <div class="score-item">
+                            <span class="score-label">Investigation:</span>
+                            <span class="score-value">100%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Evidence Analysis:</span>
+                            <span class="score-value">100%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Defensive Decision:</span>
+                            <span class="score-value" id="final-defender-score">--</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Questions:</span>
+                            <span class="score-value" id="final-quiz-score">--</span>
+                        </div>
+                    </div>
+                    
+                    <div class="score-message">
+                        <p id="score-personalized-message">You have successfully completed this investigation.</p>
+                    </div>
+                    
+                    <div class="action-buttons" style="margin-top:2rem;">
+                        <button class="btn-outline" onclick="navigateTo('screen-archive')">RETURN TO ARCHIVE</button>
+                        <button class="btn-primary" onclick="navigateTo('screen-landing')">LIVE THREATS</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Scripts -->
+    <script src="script.js"></script>
+    <!-- Feature Data -->
+    <script src="cyber-incidents-data.js"></script>
+    <!-- Feature Logic -->
+    <script src="cyber-incidents.js"></script>
+</body>
+</html>

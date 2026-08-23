@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe | URL Safety Checker</title>
+    
+    <!-- Link to our CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="shield-icon">🛡️</span> CyberSafe
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#tools">Tools</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">
+                    ☀️
+                </button>
+                <!-- Mobile Menu Toggle Button -->
+                <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                    ☰
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- URL Checker Section (Now standalone page content) -->
+    <section id="url-checker" class="features url-checker-section" style="background-color: var(--bg-color); min-height: 70vh;">
+        <div class="container">
+            <h2 class="section-title">URL Safety Checker</h2>
+            <p class="section-subtitle">Enter a website URL to run a basic security check.</p>
+            
+            <div class="checker-box">
+                <form id="url-checker-form" class="checker-form">
+                    <input type="text" id="url-input" placeholder="https://example.com" required aria-label="Website URL">
+                    <button type="submit" class="cta-button checker-btn">Check URL</button>
+                </form>
+                
+                <div id="checker-result" class="checker-result hidden">
+                    <div id="result-header" class="result-header">
+                        <span id="result-icon" class="result-icon"></span>
+                        <h3 id="result-title"></h3>
+                    </div>
+                    <p id="result-description" class="result-description"></p>
+                    <ul id="result-details" class="result-details"></ul>
+                </div>
+
+                <div class="safety-notice">
+                    <p><strong>Notice:</strong> This tool performs basic URL checks. A "Safe-Looking" result does not guarantee that a website is completely safe. Avoid entering passwords, payment information, or personal information on suspicious websites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">🛡️ CyberSafe</div>
+            <p>&copy; 2026 CyberSafe. Built for educational purposes.</p>
+            <p class="disclaimer">Disclaimer: CyberSafe provides basic guidance and cannot detect every real-world threat.</p>
+        </div>
+    </footer>
+
+    <!-- Link to our JavaScript file for interactivity -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+/* 
+   CYBER: THE LAST CLICK
+   Specific stylesheet for the Scam Awareness game
+*/
+
+/* Import Monospace font for "cyber" feel */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --cyber-dark: #0a0e17;
+    --cyber-panel: rgba(15, 23, 42, 0.7);
+    --cyber-border: rgba(59, 130, 246, 0.3);
+    --cyber-glow: 0 0 15px rgba(59, 130, 246, 0.2);
+    --cyber-text: #e2e8f0;
+    --cyber-accent: #3b82f6;
+    --cyber-success: #10b981;
+    --cyber-warning: #f59e0b;
+    --cyber-danger: #ef4444;
+    --mono-font: 'Share Tech Mono', monospace;
+}
+
+/* Force dark theme for the game body regardless of global theme */
+.cyber-game-body {
+    background-color: var(--cyber-dark);
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(15, 23, 42, 1) 0%, rgba(10, 14, 23, 1) 100%),
+        linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 30px 30px, 30px 30px;
+    color: var(--cyber-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--cyber-border);
+    padding-bottom: 1rem;
+}
+
+.dashboard-title h1 {
+    font-family: var(--mono-font);
+    font-size: 2.5rem;
+    color: var(--cyber-text);
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-title .subtitle {
+    color: var(--cyber-accent);
+    font-family: var(--mono-font);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.stats-panel {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-family: var(--mono-font);
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--mono-font);
+}
+
+.xp-box .stat-value {
+    color: var(--cyber-success);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Investigation Grid */
+.investigation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    flex-grow: 1;
+}
+
+@media (max-width: 900px) {
+    .investigation-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Panels */
+.device-panel, .evidence-panel {
+    background: var(--cyber-panel);
+    border: 1px solid var(--cyber-border);
+    border-radius: 8px;
+    box-shadow: var(--cyber-glow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.panel-header {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.panel-header.border-bottom {
+    border-bottom: 1px solid var(--cyber-border);
+    justify-content: space-between;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.dot.red { background-color: var(--cyber-danger); }
+.dot.yellow { background-color: var(--cyber-warning); }
+.dot.green { background-color: var(--cyber-success); }
+
+.panel-title {
+    font-family: var(--mono-font);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+    letter-spacing: 1px;
+}
+
+/* Device Content (Phone Simulation) */
+.device-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+}
+
+/* Phone UI wrapper */
+.phone-ui {
+    width: 320px;
+    height: 500px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 8px solid #333;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #111;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    position: relative;
+}
+
+/* Dark mode phone UI */
+.phone-ui.dark-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+.phone-header {
+    background-color: #f8f9fa;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
+}
+.phone-ui.dark-mode .phone-header {
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #444;
+}
+
+.phone-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f0f2f5;
+}
+.phone-ui.dark-mode .phone-body {
+    background-color: #111;
+}
+
+.message-bubble {
+    background-color: #fff;
+    padding: 12px 15px;
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+.phone-ui.dark-mode .message-bubble {
+    background-color: #2c2c2c;
+    box-shadow: none;
+}
+
+/* Interactive elements within the phone */
+.clickable-evidence {
+    cursor: crosshair;
+    transition: all 0.2s;
+    border-radius: 3px;
+    position: relative;
+}
+
+.clickable-evidence:hover {
+    background-color: rgba(245, 158, 11, 0.2);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5);
+}
+
+.clickable-evidence.found {
+    background-color: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5);
+    pointer-events: none;
+}
+
+/* Highlight Animation */
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(500px); }
+}
+
+.device-content::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 10px;
+    background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent);
+    animation: scanline 4s linear infinite;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Story Instructions */
+.story-instructions {
+    padding: 1rem;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid var(--cyber-border);
+    font-family: var(--mono-font);
+    color: var(--cyber-accent);
+    text-align: center;
+}
+
+/* Evidence Board */
+.evidence-board {
+    padding: 1.5rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 3rem;
+    font-family: var(--mono-font);
+}
+
+.empty-state .hint {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+}
+
+.evidence-item {
+    background: rgba(255,255,255,0.03);
+    border-left: 4px solid var(--cyber-accent);
+    padding: 1rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.evidence-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.evidence-title {
+    font-weight: 600;
+    color: var(--cyber-text);
+    font-family: var(--mono-font);
+}
+
+.evidence-xp {
+    font-size: 0.8rem;
+    color: var(--cyber-success);
+    font-family: var(--mono-font);
+}
+
+.evidence-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.action-btn {
+    background: transparent;
+    border: 1px solid var(--cyber-accent);
+    color: var(--cyber-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-family: var(--mono-font);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+}
+
+.action-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+.primary-btn {
+    background: var(--cyber-accent);
+    color: #fff;
+}
+
+.primary-btn:hover {
+    background: #2563eb;
+}
+
+.secondary-btn {
+    border-color: var(--cyber-text);
+    color: var(--cyber-text);
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 1rem;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--cyber-panel);
+    border: 1px solid var(--cyber-accent);
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: var(--cyber-glow);
+    overflow: hidden;
+}
+
+.modal-header {
+    background: rgba(59, 130, 246, 0.2);
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--cyber-border);
+}
+
+.modal-header h2 {
+    font-family: var(--mono-font);
+    letter-spacing: 2px;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+#decision-question {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.decision-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.decision-option {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1rem;
+    border-radius: 4px;
+    color: var(--cyber-text);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.decision-option:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--cyber-accent);
+}
+
+/* Result Modal Specifics */
+.consequence-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.educational-card {
+    background: rgba(0,0,0,0.3);
+    border-left: 4px solid var(--cyber-warning);
+    padding: 1.2rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-family: var(--mono-font);
+    font-weight: bold;
+    color: var(--cyber-warning);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.xp-reward {
+    text-align: center;
+    font-family: var(--mono-font);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--cyber-success);
+    margin: 1.5rem 0;
+}
+
+.xp-penalty {
+    color: var(--cyber-danger);
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid var(--cyber-border);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Loading spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--cyber-accent);
+    animation: spin 1s ease-in-out infinite;
+    margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-state {
+    text-align: center;
+    font-family: var(--mono-font);
+    color: var(--cyber-accent);
+}
