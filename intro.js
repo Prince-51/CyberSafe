@@ -1,13 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initCyberSafeIntro() {
     const intro = document.getElementById('cybersafe-intro');
     if (!intro) return;
 
     const skipBtn = document.getElementById('intro-skip-btn');
-    const introKey = 'cybersafe-cinematic-intro-seen';
+    // Renamed key to force the intro to show again for testing after the bug
+    const introKey = 'cybersafe-cinematic-intro-v3';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Use sessionStorage so the intro only plays once per visit (doesn't repeat when using the back button)
-    if (sessionStorage.getItem(introKey)) {
+    // Use localStorage so the intro only plays once per visit
+    if (localStorage.getItem(introKey)) {
         intro.style.display = 'none';
         return;
     }
@@ -15,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const finishIntro = () => {
         if (!intro.classList.contains('hidden')) {
             intro.classList.add('hidden');
-            sessionStorage.setItem(introKey, 'true');
+            localStorage.setItem(introKey, 'true');
             setTimeout(() => {
                 intro.style.display = 'none';
-            }, 800);
+            }, 700);
         }
     };
 
@@ -39,22 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const hideAll = () => {
         Object.values(scenes).forEach(s => {
-            if (s) s.classList.remove('active');
+            if (s) s.classList.remove('active', 'freeze');
         });
     };
 
     if (prefersReducedMotion) {
         // Simplified sequence for reduced motion
         setTimeout(() => { hideAll(); if(scenes[1]) scenes[1].classList.add('active'); }, 0);
-        setTimeout(() => { hideAll(); if(scenes.activate) scenes.activate.classList.add('active', 'animate'); }, 1500);
-        setTimeout(() => { hideAll(); if(scenes.reveal) scenes.reveal.classList.add('active'); }, 3000);
-        setTimeout(finishIntro, 4500);
+        setTimeout(() => { hideAll(); if(scenes.activate) scenes.activate.classList.add('active', 'animate'); }, 1000);
+        setTimeout(() => { hideAll(); if(scenes.reveal) scenes.reveal.classList.add('active'); }, 2000);
+        setTimeout(finishIntro, 3500);
     } else {
-        // Full Cinematic Story Sequence (17 seconds)
-        // 0-5s: Opening atmosphere, First person, Scam message arrives
+        // Fast Cinematic Story Sequence (6.5 seconds)
+        // 0.0–1.0s Person + scam message
         setTimeout(() => { hideAll(); if(scenes[1]) scenes[1].classList.add('active'); }, 0);
 
-        // 5-8s: Second person + Suspicious link
+        // 1.0–2.0s Second person + suspicious link
         setTimeout(() => { 
             hideAll(); 
             if(scenes[2]) {
@@ -62,11 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     const warning = scenes[2].querySelector('.warning-box');
                     if (warning) warning.style.opacity = '1';
-                }, 1000); // warning appears after 1 second
+                }, 400); // warning appears quickly
             }
-        }, 5000);
+        }, 1000);
 
-        // 8-10.5s: Third person + Fake login situation
+        // 2.0–3.0s Third person + fake login
         setTimeout(() => { 
             hideAll(); 
             if(scenes[3]) {
@@ -76,36 +77,36 @@ document.addEventListener('DOMContentLoaded', () => {
                     const caption = scenes[3].querySelector('.scene-caption');
                     if (warning) warning.style.opacity = '1';
                     if (caption) caption.style.opacity = '1';
-                }, 1000);
+                }, 400);
             }
-        }, 8000);
+        }, 2000);
 
-        // 10.5-11.5s: Everything freezes (Suspense / danger)
+        // 3.0–3.3s Danger freezes / suspense
         setTimeout(() => {
             if(scenes[3]) scenes[3].classList.add('freeze');
-        }, 10500);
+        }, 3000);
 
-        // 11.5-13s: CYBERSAFE ACTIVATES (Shield forms)
+        // 3.3–4.2s CyberSafe shield activates
         setTimeout(() => {
             hideAll();
             if(scenes.activate) scenes.activate.classList.add('active', 'animate');
-        }, 11500);
+        }, 3300);
 
-        // 13-14s: Protection pulse
+        // 4.2–4.8s Protection wave
         setTimeout(() => {
             if(wave) wave.classList.add('fire');
             const threat = scenes.activate.querySelector('.threat');
             if (threat) threat.style.display = 'none';
-        }, 13000);
+        }, 4200);
 
-        // 14-15.5s: CYBERSAFE REVEAL
+        // 4.8–5.8s CYBERSAFE logo reveal
         setTimeout(() => {
-            hideAll();
+            hideAll(); // Hiding scene.activate here at 4.8s allows the 0.6s wave to complete perfectly
             if(scenes.reveal) scenes.reveal.classList.add('active');
-        }, 14000);
+        }, 4800);
 
-        // 15.5-17s: Smooth transition to homepage
-        setTimeout(finishIntro, 15500);
+        // 5.8–6.5s Homepage transition
+        setTimeout(finishIntro, 5800);
     }
 
     // Replay logic setup (already placed in footer by index.html)
@@ -113,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (replayBtn) {
         replayBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            sessionStorage.removeItem(introKey);
+            localStorage.removeItem(introKey);
             location.reload();
         });
     }
@@ -130,4 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCyberSafeIntro);
+} else {
+    initCyberSafeIntro();
+}
