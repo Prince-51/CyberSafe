@@ -1,0 +1,312 @@
+/* CYBERSAFE CINEMATIC INTRO */
+#cybersafe-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #070B14;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #F5F7FF;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+#cybersafe-intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Scene Container */
+.intro-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.intro-scene.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Human Silhouettes - Using simple CSS shapes */
+.human-silhouette {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #1a2436 0%, transparent 70%);
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.human-silhouette::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(to top, transparent, #1a2436);
+    border-radius: 60px 60px 0 0;
+}
+
+.human-silhouette.alt-1 { transform: scale(0.9); }
+.human-silhouette.alt-2 { transform: scale(1.1); }
+
+/* Devices */
+.device-ui {
+    background: #0D1321;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.phone-ui { width: 220px; }
+.laptop-ui { width: 320px; padding: 25px 20px; border-radius: 8px; }
+
+/* UI Elements */
+.msg-bubble {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    color: #cbd5e1;
+}
+
+.scam-btn {
+    background: linear-gradient(45deg, #FF4D67, #d43f55);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(255, 77, 103, 0.3);
+}
+
+.scam-link {
+    color: #00E5FF;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.login-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.fake-input {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px;
+    font-size: 0.8rem;
+    color: #64748B;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.login-btn { width: 100%; margin-top: 5px; }
+
+/* Danger Warnings */
+.warning-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #FF4D67;
+    background: rgba(255, 77, 103, 0.1);
+    color: #FF4D67;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 4px;
+    animation: flash 0.5s infinite alternate;
+    white-space: nowrap;
+    opacity: 0;
+}
+
+.warning-box.red-alert { font-size: 1rem; padding: 10px 15px; background: rgba(0,0,0,0.8); }
+.scene-caption { position: absolute; bottom: 15%; font-size: 1rem; color: #94A3B8; font-weight: 300; letter-spacing: 0.05rem; }
+.danger-text { color: #FF4D67; font-weight: 600; letter-spacing: 0.1rem; font-size: 1.2rem; }
+
+@keyframes flash {
+    from { opacity: 0.5; box-shadow: 0 0 5px #FF4D67; }
+    to { opacity: 1; box-shadow: 0 0 20px #FF4D67; }
+}
+
+/* Freeze Effect */
+.freeze {
+    filter: grayscale(0.8) contrast(1.2);
+    transform: scale(0.98);
+    transition: all 0.1s;
+}
+
+.freeze .warning-box { animation: none; opacity: 1; }
+
+/* Scene 4/5: Activation */
+.shield-constructor {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #00E5FF;
+    opacity: 0;
+}
+
+.ring.outer { width: 100%; height: 100%; border-top: 2px solid #7C4DFF; border-bottom: 2px solid #7C4DFF; }
+.ring.inner { width: 70%; height: 70%; border-left: 2px solid #00E5FF; border-right: 2px solid #00E5FF; }
+
+#cybersafe-intro .shield-icon {
+    font-size: 4rem;
+    opacity: 0;
+    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.8));
+}
+
+.hud-text {
+    font-family: monospace;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    letter-spacing: 0.15rem;
+    opacity: 0;
+}
+
+.hud-text.threat { color: #FF4D67; }
+.hud-text.protection { color: #00E5FF; margin-top: 10px; font-size: 1rem; }
+
+/* Activation Animations triggered via JS class */
+#scene-activate.animate .ring.outer { animation: spin 2s linear infinite, fade-in 0.3s forwards; }
+#scene-activate.animate .ring.inner { animation: spin-reverse 1.5s linear infinite, fade-in 0.3s 0.2s forwards; }
+#scene-activate.animate .shield-icon { animation: construct 0.5s 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+#scene-activate.animate .hud-text.threat { animation: fade-in 0.2s forwards; }
+#scene-activate.animate .hud-text.protection { animation: fade-in 0.2s 0.6s forwards; }
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+@keyframes fade-in { to { opacity: 1; } }
+@keyframes construct { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* Protection Wave */
+.protection-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.8) 0%, rgba(124, 77, 255, 0.4) 40%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.protection-wave.fire {
+    animation: wave-expand 0.6s ease-out forwards;
+}
+
+@keyframes wave-expand {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(200); opacity: 0; }
+}
+
+/* Scene 7: Together */
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+@media (min-width: 768px) {
+    .cards-container { flex-direction: row; gap: 30px; }
+}
+
+.concept-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #94A3B8;
+    letter-spacing: 0.1rem;
+}
+
+.center-card {
+    background: rgba(0, 229, 255, 0.05);
+    border-color: rgba(0, 229, 255, 0.3);
+    text-align: center;
+    padding: 20px;
+}
+
+.shield-small { font-size: 2rem; display: block; margin-bottom: 10px; }
+.core-values { color: #00E5FF; font-size: 0.8rem; font-weight: 600; line-height: 1.5; }
+
+/* Scene 8: Reveal */
+.final-shield { font-size: 3.5rem; filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.4)); margin-bottom: 15px; }
+.intro-title { font-size: 3rem; font-weight: 700; letter-spacing: 0.3rem; margin: 0; color: #ffffff; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
+.intro-tagline { font-size: 1.1rem; font-weight: 300; letter-spacing: 0.15rem; margin-top: 15px; color: #a0aec0; }
+
+/* Skip Button */
+.intro-skip {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    z-index: 100;
+    transition: color 0.3s;
+}
+
+.intro-skip:hover { color: #fff; }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .ring, .protection-wave, .warning-box { animation: none !important; display: none !important; }
+    #cybersafe-intro .shield-icon, .hud-text { opacity: 1 !important; transform: none !important; }
+}
+
+@media (max-width: 768px) {
+    .intro-title { font-size: 2.2rem; }
+    .intro-tagline { font-size: 0.8rem; }
+    .scene-caption { font-size: 0.85rem; text-align: center; width: 90%; }
+}
