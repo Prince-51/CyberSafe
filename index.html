@@ -11,8 +11,83 @@
     
     <!-- Google Fonts for modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Cinematic Intro Styles -->
+    <link rel="stylesheet" href="intro.css">
 </head>
 <body>
+    <!-- Cinematic Intro Overlay -->
+    <div id="cybersafe-intro" class="story-mode">
+        <!-- Scene 1: Person 1 + Scam -->
+        <div class="intro-scene" id="scene-1">
+            <div class="human-silhouette"></div>
+            <div class="device-ui phone-ui">
+                <div class="msg-bubble">Congratulations! You've won a special reward.</div>
+                <div class="scam-btn">CLAIM REWARD</div>
+            </div>
+            <div class="scene-caption">It starts with something that looks real...</div>
+        </div>
+
+        <!-- Scene 2: Person 2 + Suspicious Link -->
+        <div class="intro-scene" id="scene-2">
+            <div class="human-silhouette alt-1"></div>
+            <div class="device-ui phone-ui">
+                <div class="msg-bubble">Your account needs verification.</div>
+                <div class="scam-link">Verify Now</div>
+                <div class="warning-box">SUSPICIOUS LINK</div>
+            </div>
+            <div class="scene-caption">A message. A link. One small click...</div>
+        </div>
+
+        <!-- Scene 3: Person 3 + Fake Login -->
+        <div class="intro-scene" id="scene-3">
+            <div class="human-silhouette alt-2"></div>
+            <div class="device-ui laptop-ui">
+                <div class="login-header">SECURE LOGIN</div>
+                <div class="fake-input">User ID</div>
+                <div class="fake-input">Password</div>
+                <div class="scam-btn login-btn">LOGIN</div>
+                <div class="warning-box red-alert">FAKE LOGIN PAGE</div>
+            </div>
+            <div class="scene-caption danger-text">YOUR DATA. YOUR RISK.</div>
+        </div>
+
+        <!-- Scene 4 & 5 & 6: Activation & Wave -->
+        <div class="intro-scene" id="scene-activate">
+            <div class="shield-constructor">
+                <div class="ring outer"></div>
+                <div class="ring inner"></div>
+                <div class="particles"></div>
+                <span class="shield-icon">🛡️</span>
+            </div>
+            <div class="hud-text threat">THREAT DETECTED</div>
+            <div class="hud-text protection">CYBERSAFE PROTECTION ACTIVATED</div>
+            <div class="protection-wave"></div>
+        </div>
+
+        <!-- Scene 7: Three people together -->
+        <div class="intro-scene" id="scene-together">
+            <div class="cards-container">
+                <div class="concept-card">SCAM</div>
+                <div class="concept-card center-card">
+                    <span class="shield-small">🛡️</span>
+                    <div class="core-values">AWARENESS.<br>PROTECTION.<br>SAFETY.</div>
+                </div>
+                <div class="concept-card">PHISHING</div>
+                <div class="concept-card bottom-card">FAKE LOGIN</div>
+            </div>
+        </div>
+
+        <!-- Scene 8: Brand Reveal -->
+        <div class="intro-scene" id="scene-reveal">
+            <span class="intro-shield final-shield">🛡️</span>
+            <h1 class="intro-title">CYBERSAFE</h1>
+            <p class="intro-tagline">YOUR DIGITAL SAFETY COMPANION</p>
+        </div>
+
+        <button class="intro-skip" id="intro-skip-btn">SKIP &rarr;</button>
+    </div>
+
     <!-- Navigation Bar -->
     <header>
         <nav class="navbar">
@@ -101,10 +176,14 @@
             <div class="footer-logo">🛡️ CyberSafe</div>
             <p>&copy; 2026 CyberSafe. Built for educational purposes.</p>
             <p class="disclaimer">Disclaimer: CyberSafe provides basic guidance and cannot detect every real-world threat.</p>
+            <p style="margin-top: 10px;"><a href="#" id="replay-intro-btn" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">Replay Intro</a></p>
         </div>
     </footer>
 
     <!-- Link to our JavaScript file for interactivity -->
     <script src="script.js"></script>
+    
+    <!-- Cinematic Intro Logic -->
+    <script src="intro.js"></script>
 </body>
 </html>
