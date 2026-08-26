@@ -3,25 +3,27 @@
 
 /* Define Feature Specific Variables */
 :root {
-    --cyber-dark: #0a0e17;
-    --cyber-panel: rgba(16, 24, 39, 0.7);
-    --cyber-border: rgba(56, 189, 248, 0.2);
-    --cyber-accent: #38bdf8;
-    --cyber-accent-glow: rgba(56, 189, 248, 0.4);
-    --cyber-red: #ef4444;
-    --cyber-red-glow: rgba(239, 68, 68, 0.4);
-    --cyber-text: #e2e8f0;
-    --cyber-muted: #94a3b8;
+    --cyber-dark: #070B14;
+    --cyber-panel: rgba(17, 26, 43, 0.7);
+    --cyber-border: rgba(0, 229, 255, 0.2);
+    --cyber-accent: #00E5FF;
+    --cyber-accent-glow: rgba(0, 229, 255, 0.4);
+    --cyber-purple: #7C4DFF;
+    --cyber-red: #FF4D67;
+    --cyber-red-glow: rgba(255, 77, 103, 0.4);
+    --cyber-text: #F5F7FF;
+    --cyber-muted: #94A3B8;
 }
 
 [data-theme="light"] {
     /* For light mode, we keep a sleek professional look, though dark is the primary intended experience */
-    --cyber-dark: #f8fafc;
-    --cyber-panel: #ffffff;
-    --cyber-border: rgba(15, 23, 42, 0.1);
-    --cyber-accent: #0284c7;
-    --cyber-text: #0f172a;
-    --cyber-muted: #64748b;
+    --cyber-dark: #F6F8FC;
+    --cyber-panel: #FFFFFF;
+    --cyber-border: rgba(8, 145, 178, 0.2);
+    --cyber-accent: #0891B2;
+    --cyber-purple: #6D28D9;
+    --cyber-text: #0F172A;
+    --cyber-muted: #64748B;
 }
 
 body.cyber-incidents-body {
@@ -34,9 +36,14 @@ body.cyber-incidents-body {
 }
 
 /* Typography for Cyber Feel */
-h1, h2, h3, .sub-label {
+h1, .sub-label, .case-title-large, .main-title {
     font-family: 'Share Tech Mono', monospace;
     letter-spacing: 1px;
+}
+
+h2, h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
 }
 
 /* Navigation */
@@ -365,9 +372,9 @@ h1, h2, h3, .sub-label {
     letter-spacing: 1px;
 }
 
-.severity-badge.critical { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; }
-.severity-badge.high { background: rgba(249, 115, 22, 0.2); color: #fdba74; border: 1px solid #f97316; }
-.severity-badge.medium { background: rgba(234, 179, 8, 0.2); color: #fde047; border: 1px solid #eab308; }
+.severity-badge.critical { background: rgba(255, 77, 103, 0.2); color: #ff8c9f; border: 1px solid var(--cyber-red); }
+.severity-badge.high { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid #F59E0B; }
+.severity-badge.medium { background: rgba(0, 229, 255, 0.2); color: #80f2ff; border: 1px solid var(--cyber-accent); }
 
 .threat-date {
     font-size: 0.8rem;

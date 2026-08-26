@@ -21,7 +21,7 @@
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#tools">Tools</a></li>
-                <li><a href="index.html#about">About</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
             <div class="nav-actions">
                 <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">☀️</button>
@@ -32,7 +32,7 @@
 
     <main style="padding-bottom: 4rem;">
         <!-- Hero Section -->
-        <section class="phishing-hero" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, var(--bg-color) 100%);">
+        <section class="phishing-hero" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, var(--bg-primary) 100%);">
             <div class="container" style="max-width: 800px;">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--text-primary);">What is Phishing?</h1>
                 <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.8;">
@@ -75,16 +75,16 @@
             <div class="container" style="max-width: 900px;">
                 <h2 class="section-title">🚩 How to Spot Phishing</h2>
                 <ul class="red-flags-list" style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 2rem;">
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Unexpected messages:</strong> Contact from out of the blue.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Urgent or threatening language:</strong> Creating panic to rush you.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Suspicious links:</strong> URLs that look slightly misspelled or unusual.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Requests for passwords/OTPs:</strong> Legitimate companies never ask for these.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Requests for banking info:</strong> Asking you to confirm payment details.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Unknown sender addresses:</strong> The "from" email doesn't match the company.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Spelling or grammar mistakes:</strong> Often a sign of an unprofessional scam.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Too good to be true:</strong> Free money, prizes, or incredible offers.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Unexpected attachments:</strong> Invoices or documents you didn't ask for.</li>
-                    <li><span style="color: var(--accent-blue); margin-right: 0.5rem;">•</span> <strong>Bypassing security:</strong> Asking you to ignore security warnings.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Unexpected messages:</strong> Contact from out of the blue.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Urgent or threatening language:</strong> Creating panic to rush you.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Suspicious links:</strong> URLs that look slightly misspelled or unusual.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Requests for passwords/OTPs:</strong> Legitimate companies never ask for these.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Requests for banking info:</strong> Asking you to confirm payment details.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Unknown sender addresses:</strong> The "from" email doesn't match the company.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Spelling or grammar mistakes:</strong> Often a sign of an unprofessional scam.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Too good to be true:</strong> Free money, prizes, or incredible offers.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Unexpected attachments:</strong> Invoices or documents you didn't ask for.</li>
+                    <li><span style="color: var(--warning); margin-right: 0.5rem;">•</span> <strong>Bypassing security:</strong> Asking you to ignore security warnings.</li>
                 </ul>
             </div>
         </section>
@@ -97,14 +97,14 @@
                 
                 <div style="display: grid; gap: 2rem; margin-top: 2rem;">
                     <!-- Example 1 -->
-                    <div class="phishing-example" style="background-color: var(--surface-color); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="phishing-example" style="background-color: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border);">
                         <div style="margin-bottom: 1rem; color: #ef4444; font-weight: bold;">⚠️ Example Phishing Message — Do Not Use the Link</div>
                         <div class="message-bubble" style="background-color: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 1.5rem; font-family: monospace; color: var(--text-primary);">
                             From: security@nationalbank-alerts.net<br>
                             Subject: URGENT: Account Suspension<br><br>
                             Dear Customer,<br><br>
                             URGENT: Your bank account will be suspended today due to unusual activity. Verify your account immediately using the link below to restore access.<br><br>
-                            &gt; <a href="#" style="color: var(--accent-blue);">http://verify-national-bank-login.com/secure</a>
+                            &gt; <a href="#" style="color: var(--warning);">http://verify-national-bank-login.com/secure</a>
                         </div>
                         <div class="warning-signs">
                             <h4 style="margin-bottom: 0.5rem;">Warning Signs:</h4>
@@ -118,10 +118,10 @@
                     </div>
 
                     <!-- Example 2 -->
-                    <div class="phishing-example" style="background-color: var(--surface-color); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="phishing-example" style="background-color: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border);">
                         <div style="margin-bottom: 1rem; color: #ef4444; font-weight: bold;">⚠️ Example Phishing SMS — Do Not Use the Link</div>
                         <div class="message-bubble" style="background-color: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 1.5rem; font-family: monospace; color: var(--text-primary);">
-                            Delivery Express: Your package is held at the depot due to an unpaid shipping fee of $1.99. Pay immediately to release your package: <a href="#" style="color: var(--accent-blue);">http://delivery-express-fees.com/pay</a>
+                            Delivery Express: Your package is held at the depot due to an unpaid shipping fee of $1.99. Pay immediately to release your package: <a href="#" style="color: var(--warning);">http://delivery-express-fees.com/pay</a>
                         </div>
                         <div class="warning-signs">
                             <h4 style="margin-bottom: 0.5rem;">Warning Signs:</h4>
@@ -142,7 +142,7 @@
                 <h2 class="section-title">🧠 Can You Spot the Phishing?</h2>
                 <p class="section-subtitle">Test your skills with these fictional scenarios.</p>
 
-                <div class="quiz-container" style="background-color: var(--surface-color); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 2rem; text-align: left;">
+                <div class="quiz-container" style="background-color: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border); margin-top: 2rem; text-align: left;">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
                         <span style="color: var(--text-secondary); font-size: 0.9rem;">Scenario <span id="quiz-progress">1/3</span></span>
                     </div>
@@ -154,7 +154,7 @@
                     <div id="quiz-question-area">
                         <h4 style="margin-bottom: 1rem; text-align: center;">Is this message Safe or Phishing?</h4>
                         <div style="display: flex; justify-content: center; gap: 1rem;">
-                            <button id="btn-safe" class="cta-button" style="background-color: var(--accent-green); padding: 0.8rem 2rem;">✅ Looks Safe</button>
+                            <button id="btn-safe" class="cta-button" style="background-color: var(--success); color: #fff; padding: 0.8rem 2rem; border:none;">✅ Looks Safe</button>
                             <button id="btn-phish" class="cta-button" style="background-color: #ef4444; padding: 0.8rem 2rem;">⚠️ Phishing</button>
                         </div>
                     </div>

@@ -7,15 +7,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 :root {
-    --cyber-dark: #0a0e17;
-    --cyber-panel: rgba(15, 23, 42, 0.7);
-    --cyber-border: rgba(59, 130, 246, 0.3);
-    --cyber-glow: 0 0 15px rgba(59, 130, 246, 0.2);
-    --cyber-text: #e2e8f0;
-    --cyber-accent: #3b82f6;
-    --cyber-success: #10b981;
-    --cyber-warning: #f59e0b;
-    --cyber-danger: #ef4444;
+    --cyber-dark: #070B14;
+    --cyber-panel: rgba(17, 26, 43, 0.7);
+    --cyber-border: rgba(0, 229, 255, 0.2);
+    --cyber-glow: 0 0 15px rgba(0, 229, 255, 0.2);
+    --cyber-text: #F5F7FF;
+    --cyber-accent: #00E5FF;
+    --cyber-success: #22C55E;
+    --cyber-warning: #F59E0B;
+    --cyber-danger: #FF4D67;
     --mono-font: 'Share Tech Mono', monospace;
 }
 
@@ -23,9 +23,9 @@
 .cyber-game-body {
     background-color: var(--cyber-dark);
     background-image: 
-        radial-gradient(circle at 50% 0%, rgba(15, 23, 42, 1) 0%, rgba(10, 14, 23, 1) 100%),
-        linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+        radial-gradient(circle at 50% 0%, rgba(17, 26, 43, 1) 0%, rgba(7, 11, 20, 1) 100%),
+        linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
     background-size: 100% 100%, 30px 30px, 30px 30px;
     color: var(--cyber-text);
     min-height: 100vh;

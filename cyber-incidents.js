@@ -111,14 +111,15 @@ function renderArchiveList(filterText = '', filterType = 'all') {
     archiveContainer.innerHTML = '';
     const archiveData = window.cyberIncidentsData.archive;
 
-    // Sort by year descending (newest first) for timeline view, or ascending depending on preference
-    // Let's do newest first
     const sortedArchive = [...archiveData].sort((a, b) => b.year - a.year);
 
     let hasResults = false;
+    
+    // Switch container to use grid layout similar to threats-grid
+    archiveContainer.className = 'threats-grid';
+    archiveContainer.style.marginTop = '2rem';
 
     sortedArchive.forEach(incident => {
-        // Apply filters
         const matchesText = filterText === '' || 
                             incident.title.toLowerCase().includes(filterText.toLowerCase());
         const matchesType = filterType === 'all' || 
@@ -126,30 +127,37 @@ function renderArchiveList(filterText = '', filterType = 'all') {
 
         if (matchesText && matchesType) {
             hasResults = true;
-            const node = document.createElement('div');
-            node.className = 'archive-node';
+            const card = document.createElement('div');
+            card.className = 'threat-card';
             
-            // If we have detailed data for it (like WannaCry), enable the investigate button
             const hasDetails = window.cyberIncidentsData.incidents[incident.id] ? true : false;
+            let summaryText = 'Incident details are not available.';
+            if (hasDetails) {
+                summaryText = window.cyberIncidentsData.incidents[incident.id].summary;
+            }
             
-            node.innerHTML = `
-                <div class="node-year">${incident.year}</div>
-                <h3 class="node-title">${incident.title}</h3>
-                <div class="node-meta">
-                    <span>Type: ${incident.type}</span>
-                    <span>Severity: ${incident.severity}</span>
+            card.innerHTML = `
+                <div class="threat-card-header">
+                    <span class="severity-badge ${incident.severity.toLowerCase()}">${incident.type}</span>
+                    <span class="threat-date">${incident.year}</span>
+                </div>
+                <h3>${incident.title}</h3>
+                <div class="threat-summary" style="flex-grow: 1; margin-top: 1rem;">${summaryText}</div>
+                <div class="threat-footer" style="margin-top: 1.5rem; justify-content: center;">
+                    <button class="btn-investigate" style="width: 100%;">EXPLORE INCIDENT →</button>
                 </div>
             `;
 
             if (hasDetails) {
-                // Phase 2: Load the Incident File screen
-                node.onclick = () => loadIncidentFile(incident.id);
+                card.onclick = () => loadIncidentFile(incident.id);
             } else {
-                node.style.opacity = '0.6';
-                node.title = 'Detailed case file not available for this demo';
+                card.style.opacity = '0.6';
+                card.title = 'Detailed case file not available for this demo';
+                const btn = card.querySelector('button');
+                if (btn) btn.disabled = true;
             }
 
-            archiveContainer.appendChild(node);
+            archiveContainer.appendChild(card);
         }
     });
 
