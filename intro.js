@@ -3,12 +3,39 @@ function initCyberSafeIntro() {
     if (!intro) return;
 
     const skipBtn = document.getElementById('intro-skip-btn');
-    // Renamed key to force the intro to show again for testing after the bug
-    const introKey = 'cybersafe-cinematic-intro-v3';
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Use localStorage so the intro only plays once per visit
-    if (localStorage.getItem(introKey)) {
+    // Session & Visit Detection
+    const sessionKey = 'cybersafe-session-active';
+    const heartbeatKey = 'cybersafe-heartbeat';
+    
+    const now = Date.now();
+    const lastHeartbeat = localStorage.getItem(heartbeatKey);
+    // If heartbeat was within the last 2 seconds, assume another tab is open
+    const isAnotherTabOpen = lastHeartbeat && (now - parseInt(lastHeartbeat)) < 2000;
+    
+    const hasSeenIntroInTab = sessionStorage.getItem(sessionKey) === 'true';
+    let shouldSkipIntro = false;
+
+    if (hasSeenIntroInTab) {
+        // Case: Refresh or navigation within the same tab
+        shouldSkipIntro = true;
+    } else if (isAnotherTabOpen) {
+        // Case: New tab opened while another tab is active
+        shouldSkipIntro = true;
+        sessionStorage.setItem(sessionKey, 'true');
+    } else {
+        // Case: Completely new visit
+        sessionStorage.setItem(sessionKey, 'true');
+    }
+
+    // Maintain heartbeat
+    localStorage.setItem(heartbeatKey, Date.now().toString());
+    setInterval(() => {
+        localStorage.setItem(heartbeatKey, Date.now().toString());
+    }, 1000);
+
+    if (shouldSkipIntro) {
         intro.style.display = 'none';
         return;
     }
@@ -16,7 +43,6 @@ function initCyberSafeIntro() {
     const finishIntro = () => {
         if (!intro.classList.contains('hidden')) {
             intro.classList.add('hidden');
-            localStorage.setItem(introKey, 'true');
             setTimeout(() => {
                 intro.style.display = 'none';
             }, 700);
@@ -39,23 +65,25 @@ function initCyberSafeIntro() {
     const wave = document.querySelector('.protection-wave');
 
     const hideAll = () => {
-        Object.values(scenes).forEach(s => {
-            if (s) s.classList.remove('active', 'freeze');
-        });
+        for (let key in scenes) {
+            if (scenes.hasOwnProperty(key) && scenes[key]) {
+                scenes[key].classList.remove('active', 'freeze');
+            }
+        }
     };
 
     if (prefersReducedMotion) {
         // Simplified sequence for reduced motion
         setTimeout(() => { hideAll(); if(scenes[1]) scenes[1].classList.add('active'); }, 0);
-        setTimeout(() => { hideAll(); if(scenes.activate) scenes.activate.classList.add('active', 'animate'); }, 1000);
-        setTimeout(() => { hideAll(); if(scenes.reveal) scenes.reveal.classList.add('active'); }, 2000);
-        setTimeout(finishIntro, 3500);
+        setTimeout(() => { hideAll(); if(scenes.activate) scenes.activate.classList.add('active', 'animate'); }, 2000);
+        setTimeout(() => { hideAll(); if(scenes.reveal) scenes.reveal.classList.add('active'); }, 4000);
+        setTimeout(finishIntro, 6000);
     } else {
-        // Fast Cinematic Story Sequence (6.5 seconds)
-        // 0.0–1.0s Person + scam message
+        // Paced Cinematic Story Sequence (9.5 seconds)
+        // 0.0–2.0s Person + scam message
         setTimeout(() => { hideAll(); if(scenes[1]) scenes[1].classList.add('active'); }, 0);
 
-        // 1.0–2.0s Second person + suspicious link
+        // 2.0–4.0s Second person + suspicious link
         setTimeout(() => { 
             hideAll(); 
             if(scenes[2]) {
@@ -63,11 +91,11 @@ function initCyberSafeIntro() {
                 setTimeout(() => {
                     const warning = scenes[2].querySelector('.warning-box');
                     if (warning) warning.style.opacity = '1';
-                }, 400); // warning appears quickly
+                }, 800); // warning appears slightly later
             }
-        }, 1000);
+        }, 2000);
 
-        // 2.0–3.0s Third person + fake login
+        // 4.0–6.0s Third person + fake login
         setTimeout(() => { 
             hideAll(); 
             if(scenes[3]) {
@@ -77,36 +105,36 @@ function initCyberSafeIntro() {
                     const caption = scenes[3].querySelector('.scene-caption');
                     if (warning) warning.style.opacity = '1';
                     if (caption) caption.style.opacity = '1';
-                }, 400);
+                }, 800);
             }
-        }, 2000);
+        }, 4000);
 
-        // 3.0–3.3s Danger freezes / suspense
+        // 6.0–6.3s Danger freezes / suspense
         setTimeout(() => {
             if(scenes[3]) scenes[3].classList.add('freeze');
-        }, 3000);
+        }, 6000);
 
-        // 3.3–4.2s CyberSafe shield activates
+        // 6.3–7.2s CyberSafe shield activates
         setTimeout(() => {
             hideAll();
             if(scenes.activate) scenes.activate.classList.add('active', 'animate');
-        }, 3300);
+        }, 6300);
 
-        // 4.2–4.8s Protection wave
+        // 7.2–7.8s Protection wave
         setTimeout(() => {
             if(wave) wave.classList.add('fire');
             const threat = scenes.activate.querySelector('.threat');
             if (threat) threat.style.display = 'none';
-        }, 4200);
+        }, 7200);
 
-        // 4.8–5.8s CYBERSAFE logo reveal
+        // 7.8–8.8s CYBERSAFE logo reveal
         setTimeout(() => {
-            hideAll(); // Hiding scene.activate here at 4.8s allows the 0.6s wave to complete perfectly
+            hideAll(); // Hiding scene.activate here allows wave to complete perfectly
             if(scenes.reveal) scenes.reveal.classList.add('active');
-        }, 4800);
+        }, 7800);
 
-        // 5.8–6.5s Homepage transition
-        setTimeout(finishIntro, 5800);
+        // 8.8–9.5s Homepage transition
+        setTimeout(finishIntro, 8800);
     }
 
     // Replay logic setup (already placed in footer by index.html)
@@ -114,7 +142,8 @@ function initCyberSafeIntro() {
     if (replayBtn) {
         replayBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            localStorage.removeItem(introKey);
+            sessionStorage.removeItem('cybersafe-session-active');
+            localStorage.removeItem('cybersafe-heartbeat');
             location.reload();
         });
     }
@@ -124,11 +153,11 @@ function initCyberSafeIntro() {
         if (!intro.classList.contains('hidden')) {
             const x = (e.clientX / window.innerWidth - 0.5) * 10;
             const y = (e.clientY / window.innerHeight - 0.5) * 10;
-            Object.values(scenes).forEach(s => {
-                if (s && s.classList.contains('active')) {
-                    s.style.transform = `translate(${x}px, ${y}px)`;
+            for (let key in scenes) {
+                if (scenes.hasOwnProperty(key) && scenes[key] && scenes[key].classList.contains('active')) {
+                    scenes[key].style.transform = `translate(${x}px, ${y}px)`;
                 }
-            });
+            }
         }
     });
 }

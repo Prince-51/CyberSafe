@@ -44,45 +44,60 @@
     visibility: visible;
 }
 
-/* Human Silhouettes - Using simple CSS shapes */
-.human-silhouette {
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, #1a2436 0%, transparent 70%);
-    border-radius: 50%;
-    position: relative;
-    margin-bottom: 20px;
-    opacity: 0.8;
+/* Cinematic Human Backgrounds */
+.human-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform: scale(1.02); /* Start slightly zoomed in */
+    transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth cinematic movement */
 }
 
-.human-silhouette::after {
+/* Scene specific cinematic camera movements */
+#scene-1 .human-bg { transform: scale(1.05); }
+#scene-1.active .human-bg { transform: scale(1); }
+
+#scene-2 .human-bg { transform: scale(1.02) translateX(1%); }
+#scene-2.active .human-bg { transform: scale(1) translateX(0); }
+
+#scene-3 .human-bg { transform: scale(1.02) translateY(-1%); }
+#scene-3.active .human-bg { transform: scale(1) translateY(0); }
+
+/* Gradient overlay so the UI and captions remain readable over the image */
+.intro-scene::after {
     content: '';
     position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 60px;
-    background: linear-gradient(to top, transparent, #1a2436);
-    border-radius: 60px 60px 0 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    background: linear-gradient(to top, rgba(7, 11, 20, 0.95) 0%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
 }
-
-.human-silhouette.alt-1 { transform: scale(0.9); }
-.human-silhouette.alt-2 { transform: scale(1.1); }
 
 /* Devices */
 .device-ui {
-    background: #0D1321;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(13, 19, 33, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 229, 255, 0.15);
     border-radius: 12px;
     padding: 15px;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top: 25vh; /* Push down to avoid covering the face */
+    transform: scale(0.9);
 }
 
 .phone-ui { width: 220px; }
@@ -155,7 +170,7 @@
 }
 
 .warning-box.red-alert { font-size: 1rem; padding: 10px 15px; background: rgba(0,0,0,0.8); }
-.scene-caption { position: absolute; bottom: 15%; font-size: 1rem; color: #94A3B8; font-weight: 300; letter-spacing: 0.05rem; }
+.scene-caption { position: absolute; bottom: 12%; font-size: 1rem; color: #94A3B8; font-weight: 300; letter-spacing: 0.05rem; z-index: 3; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
 .danger-text { color: #FF4D67; font-weight: 600; letter-spacing: 0.1rem; font-size: 1.2rem; }
 
 @keyframes flash {
@@ -175,11 +190,12 @@
 /* Scene 4/5: Activation */
 .shield-constructor {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 
 .ring {
@@ -193,7 +209,7 @@
 .ring.inner { width: 70%; height: 70%; border-left: 2px solid #00E5FF; border-right: 2px solid #00E5FF; }
 
 #cybersafe-intro .shield-icon {
-    font-size: 4rem;
+    font-size: 7rem;
     opacity: 0;
     filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.8));
 }
