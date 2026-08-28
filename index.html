@@ -14,6 +14,9 @@
     
     <!-- Cinematic Intro Styles -->
     <link rel="stylesheet" href="intro.css">
+
+    <!-- Emergency Feature Styles -->
+    <link rel="stylesheet" href="emergency.css">
 </head>
 <body>
     <!-- Cinematic Intro Overlay -->
@@ -127,6 +130,14 @@
             <p class="section-subtitle">Practical guides and tools to help you secure your online presence.</p>
             
             <div class="grid">
+                <!-- EMERGENCY FEATURE CARD -->
+                <div class="card emergency-entry-card" id="emergency-entry-btn">
+                    <div class="card-icon emergency-pulse">🚨</div>
+                    <h3>I THINK I'VE BEEN SCAMMED</h3>
+                    <p>Something went wrong? Don't panic. We'll guide you.</p>
+                    <button class="card-btn emergency-btn">GET HELP NOW &rarr;</button>
+                </div>
+
                 <!-- Tool 1: URL Checker -->
                 <div class="card">
                     <div class="card-icon">🔗</div>
@@ -180,10 +191,120 @@
         </div>
     </footer>
 
+    <!-- EMERGENCY FEATURE MODAL -->
+    <div id="emergency-modal" class="emergency-modal hidden">
+        <div class="emergency-header">
+            <div class="em-logo">🛡️ CYBERSAFE</div>
+            <div class="em-title">EMERGENCY CENTER</div>
+            <p class="em-subtitle">"Don't panic. Tell us what happened."</p>
+        </div>
+
+        <div class="emergency-content" id="em-content">
+            <!-- Step 1: WHAT HAPPENED? -->
+            <div class="em-step active" id="em-step-1">
+                <h2 class="em-step-title">WHAT HAPPENED?</h2>
+                <div class="em-grid">
+                    <div class="em-card" data-scenario="money">
+                        <div class="em-icon">💳</div>
+                        <div class="em-card-text">I SENT MONEY</div>
+                    </div>
+                    <div class="em-card" data-scenario="link">
+                        <div class="em-icon">🔗</div>
+                        <div class="em-card-text">I CLICKED A LINK</div>
+                    </div>
+                    <div class="em-card" data-scenario="password">
+                        <div class="em-icon">🔐</div>
+                        <div class="em-card-text">I SHARED MY PASSWORD / OTP</div>
+                    </div>
+                    <div class="em-card" data-scenario="app">
+                        <div class="em-icon">📱</div>
+                        <div class="em-card-text">I INSTALLED A SUSPICIOUS APP</div>
+                    </div>
+                    <div class="em-card" data-scenario="account">
+                        <div class="em-icon">👤</div>
+                        <div class="em-card-text">MY ACCOUNT HAS A PROBLEM</div>
+                    </div>
+                    <div class="em-card" data-scenario="notsure">
+                        <div class="em-icon">🤷</div>
+                        <div class="em-card-text">I'M NOT SURE</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: ACT NOW -->
+            <div class="em-step hidden" id="em-step-2">
+                <button class="em-back-btn" id="em-back-1">&larr; Back</button>
+                <div class="em-visual-scene" id="em-visual-scene">
+                    <!-- Visual injected via JS -->
+                </div>
+                
+                <h2 class="em-step-title" style="color: var(--warning);">⚠️ ACT NOW</h2>
+                <p class="em-step-subtitle" id="em-act-subtitle">You may need to act quickly.</p>
+                
+                <div class="em-actions" id="em-actions-list">
+                    <!-- Actions injected via JS -->
+                </div>
+
+                <div class="em-warning-card">
+                    <h3 style="color: var(--danger);">⚠️ DON'T MAKE IT WORSE</h3>
+                    <ul class="em-warning-list" id="em-warning-list">
+                        <li>❌ Don't send more money</li>
+                        <li>❌ Don't share OTP/passwords</li>
+                        <li>❌ Don't give remote access</li>
+                        <li>❌ Don't continue following instructions</li>
+                    </ul>
+                </div>
+
+                <div class="em-proof-card" id="em-proof-section">
+                    <h3>📸 KEEP THE PROOF</h3>
+                    <p>Save screenshots, messages and transaction details.</p>
+                    <p class="em-small-text">🔒 Keep your evidence private.</p>
+                </div>
+
+                <button class="em-primary-btn" id="em-done-btn">✓ I'VE DONE THIS</button>
+            </div>
+
+            <!-- Step 3: YOU'RE DONE -->
+            <div class="em-step hidden" id="em-step-3">
+                <div class="em-success-icon">🛡️</div>
+                <h2 class="em-step-title" style="color: var(--success);">GOOD JOB!</h2>
+                <p class="em-step-subtitle">You've completed the important steps for now.</p>
+                
+                <div class="em-checkmarks">
+                    <div class="em-check">✓ Secure</div>
+                    <div class="em-check">✓ Check</div>
+                    <div class="em-check">✓ Protect</div>
+                </div>
+                
+                <p class="em-small-text" style="margin: 1.5rem 0; opacity: 0.8;">Keep monitoring your account and use the official support/reporting options if you still have concerns.</p>
+
+                <div class="em-prevention">
+                    <h3>🧠 NEXT TIME</h3>
+                    <div class="em-prev-tips">
+                        <div class="em-prev-tip"><span>🔗</span> Don't blindly click links</div>
+                        <div class="em-prev-tip"><span>🔐</span> Never share OTPs or passwords</div>
+                        <div class="em-prev-tip"><span>⏸️</span> Stop when someone creates urgency or fear</div>
+                    </div>
+                    <div class="em-prev-flow">
+                        STOP &rarr; THINK &rarr; VERIFY &rarr; ACT
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="em-footer">
+            <button class="em-close-btn" id="em-close-btn">&larr; BACK TO CYBERSAFE</button>
+            <p class="em-disclaimer">CyberSafe provides general cybersecurity guidance and cannot confirm whether an account, device or transaction is compromised. For serious incidents, contact the relevant official service or authority.</p>
+        </div>
+    </div>
+
     <!-- Link to our JavaScript file for interactivity -->
     <script src="script.js"></script>
     
     <!-- Cinematic Intro Logic -->
     <script src="intro.js"></script>
+
+    <!-- Emergency Feature Logic -->
+    <script src="emergency.js"></script>
 </body>
 </html>

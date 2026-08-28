@@ -354,8 +354,6 @@
     #cybersafe-intro .shield-icon, .hud-text { opacity: 1 !important; transform: none !important; }
 }
 
-@media (max-width: 768px) {
-    .intro-title { font-size: 2.2rem; }
-    .intro-tagline { font-size: 0.8rem; }
-    .scene-caption { font-size: 0.85rem; text-align: center; width: 90%; }
-}
+.intro-title { font-size: clamp(2rem, 6vw, 3rem); }
+.intro-tagline { font-size: clamp(0.8rem, 2vw, 1.1rem); }
+.scene-caption { font-size: clamp(0.85rem, 2vw, 1rem); text-align: center; max-width: 90vw; }
