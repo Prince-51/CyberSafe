@@ -779,6 +779,12 @@ h2, h3 {
     .case-title-large {
         font-size: 2.5rem;
     }
+    .case-folder {
+        padding: 1.5rem;
+    }
+    .timeline-detail-panel {
+        padding: 1.5rem;
+    }
 }
 
 /* --- 🧬 PHASE 3: ATTACK ANATOMY --- */

@@ -398,3 +398,25 @@
         bottom: 10%;
     }
 }
+
+@media (max-width: 480px) {
+    .device-ui {
+        transform: scale(0.75);
+    }
+    .cards-container {
+        transform: scale(0.85);
+    }
+    .scene-caption {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-height: 500px) {
+    .device-ui {
+        transform: scale(0.6);
+        margin-top: 5vh;
+    }
+    .cards-container {
+        transform: scale(0.7);
+    }
+}

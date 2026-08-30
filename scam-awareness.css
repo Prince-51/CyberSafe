@@ -508,3 +508,31 @@
     font-family: var(--mono-font);
     color: var(--cyber-accent);
 }
+
+@media (max-width: 768px) {
+    .phone-ui {
+        width: 100%;
+        max-width: 320px;
+        height: 70vh;
+        max-height: 500px;
+    }
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    .device-content {
+        padding: 1rem;
+    }
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .dashboard-title h1 {
+        font-size: 2rem;
+    }
+    .stats-panel {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

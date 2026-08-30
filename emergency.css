@@ -458,4 +458,17 @@
     .em-card {
         padding: 1.5rem 1rem;
     }
+    .em-warning-card, .em-proof-card, .em-prevention {
+        padding: 1rem;
+    }
+    .em-action-item {
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+    .em-success-icon {
+        font-size: 3rem;
+    }
+    .emergency-content {
+        padding: 1rem;
+    }
 }
