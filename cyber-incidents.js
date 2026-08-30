@@ -441,8 +441,8 @@ function submitDefenderAnswer(index, btnElement) {
     const scenario = incident.defenderScenario;
     const selectedOption = scenario.options[index];
     
-    // Disable all buttons
-    document.querySelectorAll('.scenario-option-btn').forEach(btn => {
+    // Disable buttons only within the scenario options
+    document.querySelectorAll('#scenario-options .scenario-option-btn').forEach(btn => {
         btn.disabled = true;
     });
     
